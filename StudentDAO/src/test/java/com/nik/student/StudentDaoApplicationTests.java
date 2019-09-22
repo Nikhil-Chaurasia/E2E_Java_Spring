@@ -49,5 +49,10 @@ public class StudentDaoApplicationTests {
 			studentRepository.save(student);
 		}
 	}
+	
+	@Test
+	public void testDeleteStudentById() {
+		studentRepository.deleteById(1l);
+	}
 
 }
