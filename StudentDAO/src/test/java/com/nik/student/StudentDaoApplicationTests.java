@@ -1,5 +1,7 @@
 package com.nik.student;
 
+import java.util.Optional;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +23,21 @@ public class StudentDaoApplicationTests {
 	}
 	
 	@Test
-	public void createStudent() {
+	public void testCreateStudent() {
 		Student student = new Student();
 		student.setName("Mike");
 		student.setCourse("Java");
 		student.setFee(10d);
 		
 		studentRepository.save(student);
+	}
+	
+	@Test
+	public void testFindStudentById() {
+		Optional<Student> optionalStudent = studentRepository.findById(1l);
+		if (optionalStudent.isPresent()) {
+			System.out.println(optionalStudent.get());
+		}
 	}
 
 }
