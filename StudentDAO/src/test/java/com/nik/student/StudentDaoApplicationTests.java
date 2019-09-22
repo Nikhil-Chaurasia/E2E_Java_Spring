@@ -39,5 +39,15 @@ public class StudentDaoApplicationTests {
 			System.out.println(optionalStudent.get());
 		}
 	}
+	
+	@Test
+	public void testUpdateStudentById() {
+		Optional<Student> optionalStudent = studentRepository.findById(1l);
+		if (optionalStudent.isPresent()) {
+			Student student = optionalStudent.get();
+			student.setCourse("Spring");
+			studentRepository.save(student);
+		}
+	}
 
 }
