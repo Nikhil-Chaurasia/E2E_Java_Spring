@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<form action="saveLoc" method="post">
+<form action="saveLocation" method="post">
 <pre>
 Id: <input type="text" name="id"/>
 Code: <input type="text" name="code"/>
@@ -18,7 +18,7 @@ Type: Urban <input type="radio" name="type" value="URBAN"/>
 <input type="submit" value="save"/>
 </pre>
 </form>
-${msg}
+${message}
 
 <a href="displayLocations">View All</a>
 
