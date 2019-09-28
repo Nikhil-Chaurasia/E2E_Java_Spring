@@ -15,4 +15,6 @@ public interface LocationService {
 	Location getLocationById(int id);
 
 	List<Location> getAllLocation();
+	
+	List<Object[]> generateReportByType();
 }

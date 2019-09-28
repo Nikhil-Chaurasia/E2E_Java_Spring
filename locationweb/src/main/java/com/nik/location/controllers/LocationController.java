@@ -2,6 +2,8 @@ package com.nik.location.controllers;
 
 import java.util.List;
 
+import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.nik.location.model.Location;
 import com.nik.location.service.LocationService;
 import com.nik.location.utilities.EmailUtility;
+import com.nik.location.utilities.ReportUtility;
 
 @Controller
 public class LocationController {
@@ -19,7 +22,13 @@ public class LocationController {
 	private LocationService locationService;
 
 	@Autowired
+	private ServletContext servletContext;
+
+	@Autowired
 	private EmailUtility emailUtility;
+
+	@Autowired
+	private ReportUtility reportUtility;
 
 	@RequestMapping("/showCreate")
 	public String showCreate() {
@@ -41,6 +50,14 @@ public class LocationController {
 		List<Location> locations = locationService.getAllLocation();
 		modelMap.addAttribute("locations", locations);
 		return "displayLocations";
+	}
+
+	@RequestMapping("/generateReport")
+	public String generateReport() {
+		String path = servletContext.getRealPath("/");
+		List<Object[]> data = locationService.generateReportByType();
+		reportUtility.generatePieChart(path, data);
+		return "report";
 	}
 
 }

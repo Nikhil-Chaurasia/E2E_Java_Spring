@@ -41,4 +41,9 @@ public class LocationServiceImpl implements LocationService {
 		return locationRepository.findAll();
 	}
 
+	@Override
+	public List<Object[]> generateReportByType() {
+		return locationRepository.findTypeAndTypeCount();
+	}
+
 }
