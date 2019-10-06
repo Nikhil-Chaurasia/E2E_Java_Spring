@@ -26,7 +26,7 @@ public class ReportUtilityImpl implements ReportUtility {
 		JFreeChart chart = ChartFactory.createPieChart3D("Location Type Chart", dataSet, false, false, Locale.ENGLISH);
 
 		try {
-			ChartUtilities.saveChartAsJPEG(new File(path), chart, 300, 300);
+			ChartUtilities.saveChartAsJPEG(new File(path + "/pieChart.jpeg"), chart, 300, 300);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
